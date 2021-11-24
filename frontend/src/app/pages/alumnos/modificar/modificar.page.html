@@ -1,0 +1,47 @@
+<ion-content [fullscreen]="true" class="bg">
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start" [routerLink]="['/alumnos']">
+      <ion-button>
+        <ion-icon name="arrow-back" style="color: black;"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end" >
+      <ion-button [routerLink]="['/home']">
+        <ion-icon name="log-out" style="color: black;"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title style="color: #e7c502;;" text-center>Modificar Alumnos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-grid style="margin-right: 5%;" style="border-radius: 50px;">
+  <ion-row style="border-radius: 50px;">
+    <ion-col style="border-radius: 50px;">
+      <ion-item style="border-top-left-radius:15px; border-top-right-radius: 15px;">
+        <ion-label position="floating">NOMBRE</ion-label>
+        <ion-input #nombre></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">NUMERO DE LISTA</ion-label>
+        <ion-input #numero_lista></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">CARRERA</ion-label>
+        <ion-input #carrera ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">IMAGEN</ion-label>
+        <ion-input #foto_alumno></ion-input>
+      </ion-item>
+      <ion-item style="border-bottom-left-radius:15px; border-bottom-right-radius: 15px;">
+        <ion-label>PRESENTE</ion-label>
+        <ion-toggle #presente  color="success" ></ion-toggle>
+      </ion-item>
+      <ion-button (click)="cambiarAlumnos(nombre, numero_lista, carrera,foto_alumno, presente)" color='tertiary' style="margin-top: 16px; margin-left: 10px;"> Actualizar
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+</ion-content>

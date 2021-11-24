@@ -1,0 +1,26 @@
+<ion-content [fullscreen]="true" class="bg">
+<ion-header>
+  <app-enicon [pageTitle]="Titulo"></app-enicon>
+</ion-header>
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Logo_DuocUC.svg/1024px-Logo_DuocUC.svg.png"
+  style="margin-top: 5%;">
+
+  <ion-card style="margin-top: 10%;">
+    <ion-card-header>
+      <ion-card-img>
+        <img style="width: 200px; margin-left: 20%;" src="https://diario.uach.cl/wp-content/uploads/2018/04/4023200.jpg" >
+      </ion-card-img>
+      <ion-card-subtitle style="text-align: center;">{{Rol}}</ion-card-subtitle>
+      <ion-card-title style="text-align: center;">{{Nombre}}</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <b>Carrera:</b> {{Carrera}}
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button routerLink="/pag-qr" expand="block" style="margin-left: 5%; margin-right: 5%; margin-top: 16px;">Generar QR</ion-button>
+  <ion-button routerLink="/alumnos" expand="block" style="margin-left: 5%; margin-right: 5%; margin-top: 16px;">Lista Alumnos</ion-button>
+
+</ion-content>

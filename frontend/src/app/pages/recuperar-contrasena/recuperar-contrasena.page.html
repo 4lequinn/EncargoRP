@@ -1,0 +1,38 @@
+<ion-content [fullscreen]="true" class="bg">
+  <ion-header>
+    <app-encabezado [pageTitle]="Titulo"></app-encabezado>
+  </ion-header>
+
+
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Logo_DuocUC.svg/1024px-Logo_DuocUC.svg.png"
+    style="margin-top: 5%;">
+  <ion-grid style="padding: 5%;">
+    <ion-row>
+      <ion-col>
+        <b>
+          <h5>Cambia tu clave</h5>
+        </b>
+        <p>Bienvenido al portal para cambiar
+          la clave de tu cuenta Duoc, ingresa
+          tu nombre de usuario y rut para
+          iniciar el proceso.</p>
+
+          <form>
+            <ion-item>
+              <ion-label position="floating">NOMBRE DE USUARIO</ion-label>
+              <ion-input></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">RUT (11.111.111-1)</ion-label>
+              <ion-input></ion-input>
+            </ion-item>
+            <ion-button expand="block" style="margin-top: 5%;">
+              Solicitar cambio de contraseña
+            </ion-button>
+          </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
+<app-pie-pag></app-pie-pag>

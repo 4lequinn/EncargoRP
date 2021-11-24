@@ -1,0 +1,42 @@
+<ion-content [fullscreen]="true" class="bg">
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start" [routerLink]="['/docente']">
+      <ion-button>
+        <ion-icon name="arrow-back" style="color: black;"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end" >
+      <ion-button [routerLink]="['/home']">
+        <ion-icon name="log-out" style="color: black;"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title style="color: #e7c502;;" text-center>Lista de Alumnos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+  <ion-list>
+    <ion-item *ngFor=" let alumnos of alumnos" [routerLink]="['/alumnos', alumnos.id]">
+       <ion-avatar slot="start">
+        <img [src]="alumnos.Foto_Alumno ? 'http://localhost:1337' + alumnos.Foto_Alumno.formats.thumbnail.url : 'https://world-schools.com/wp-content/uploads/2020/12/477_Feat-img_The-top-5-advantages-of-small-class-sizes.jpg' ">
+      </ion-avatar>
+      <ion-label>
+        <h1>{{ alumnos.Nombre }}</h1>
+        <h2>{{ alumnos.Presente }}</h2>
+        <h2>{{ alumnos.Carrera }}</h2>
+        <h2>{{ alumnos.Numero_Lista }}</h2> 
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="secondary" routerLink="agregar-alumnos">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+    <ion-fab-button color="secondary" routerLink="/modificar">
+      <ion-icon name="create"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

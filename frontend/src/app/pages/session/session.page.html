@@ -1,0 +1,27 @@
+<ion-content [fullscreen]="true" class="bg">
+  <ion-header>
+    <app-enicon [pageTitle]="Titulo"></app-enicon>
+  </ion-header>
+
+
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Logo_DuocUC.svg/1024px-Logo_DuocUC.svg.png"
+  style="margin-top: 5%;">
+
+  <ion-card style="margin-top: 10%;">
+    <ion-card-header>
+      <ion-card-img>
+        <img style="width: 200px; margin-left: 20%;" src="https://www.evolmind.com/articulos/img/2019/04/03Como-ser-un-alumno-eLearning-excelente-1024x683.jpg" >
+      </ion-card-img>
+      <ion-card-subtitle style="text-align: center;">{{Rol}}</ion-card-subtitle>
+      <ion-card-title style="text-align: center;">{{Nombre}}</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <b>Carrera:</b> {{Carrera}}
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button style="margin-left: 5%; margin-right: 5%;" expand="block">Escanear Codigo QR</ion-button>
+
+</ion-content>
+<app-pie-pag></app-pie-pag>

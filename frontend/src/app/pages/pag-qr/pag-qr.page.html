@@ -1,0 +1,32 @@
+<ion-content [fullscreen]="true" class="bg">
+  <ion-header>
+    <ion-toolbar color="tertiary">
+      <ion-buttons slot="start" [routerLink]="['/docente']">
+        <ion-button>
+          <ion-icon name="arrow-back" style="color: black;"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-buttons slot="end" >
+        <ion-button [routerLink]="['/home']">
+          <ion-icon name="log-out" style="color: black;"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title style="color: #e7c502;;" text-center>Generar QR</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-card style="margin-top: 10%;">
+    <ion-card-header>
+      <ion-card-img>
+        <img src="https://latam.kaspersky.com/content/es-mx/images/repository/isc/2020/9910/a-guide-to-qr-codes-and-how-to-scan-qr-codes-2.png">  
+      </ion-card-img>
+      <ion-card-subtitle style="text-align: center;">{{Rol}}</ion-card-subtitle>
+      <ion-card-title style="text-align: center;">{{Nombre}}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <b>Carrera:</b> {{Carrera}}
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
