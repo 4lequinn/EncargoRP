@@ -1,8 +1,8 @@
 {
   "kind": "collectionType",
-  "collectionName": "alumnos",
+  "collectionName": "docentes",
   "info": {
-    "name": "alumno",
+    "name": "docente",
     "description": ""
   },
   "options": {
@@ -18,15 +18,8 @@
     "apellido": {
       "type": "string"
     },
-    "presente": {
-      "type": "boolean"
-    },
-    "carrera": {
-      "via": "alumno",
-      "model": "carrera"
-    },
     "ramos": {
-      "via": "alumnos",
+      "via": "docentes",
       "collection": "ramo",
       "dominant": true
     },

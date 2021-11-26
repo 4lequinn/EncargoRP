@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "usuarios",
+  "info": {
+    "name": "usuario",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nombre_usuario": {
+      "type": "string"
+    },
+    "tipo_usuario": {
+      "via": "usuarios",
+      "model": "tipo-usuario"
+    },
+    "activo": {
+      "type": "boolean"
+    },
+    "contrasenia": {
+      "type": "string"
+    }
+  }
+}

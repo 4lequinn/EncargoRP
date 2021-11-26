@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "ramos",
+  "info": {
+    "name": "ramo",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "descripcion": {
+      "type": "string"
+    },
+    "docentes": {
+      "via": "ramos",
+      "collection": "docente"
+    },
+    "alumnos": {
+      "via": "ramos",
+      "collection": "alumno"
+    },
+    "carreras": {
+      "collection": "carrera",
+      "via": "ramos",
+      "dominant": true
+    }
+  }
+}

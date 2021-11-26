@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "carreras",
+  "info": {
+    "name": "carrera",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "descripcion": {
+      "type": "string"
+    },
+    "alumno": {
+      "via": "carrera",
+      "model": "alumno"
+    },
+    "ramos": {
+      "via": "carreras",
+      "collection": "ramo"
+    }
+  }
+}

@@ -1,15 +1,15 @@
 <ion-content [fullscreen]="true" class="bg">
-  <ion-header>
-    <app-encabezado [pageTitle]="Titulo">
-    </app-encabezado>
-  </ion-header>
+    <ion-header>
+        <app-encabezado [pageTitle]="Titulo">
+        </app-encabezado>
+    </ion-header>
 
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Logo_DuocUC.svg/1024px-Logo_DuocUC.svg.png" style="margin-top: 30%;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Logo_DuocUC.svg/1024px-Logo_DuocUC.svg.png" style="margin-top: 30%;">
 
-  <b><h1 style="text-align: center; margin-top: 20%;">Bienvenido {{Rol}}: {{Nombre}}</h1></b>
+    <b><h1 style="text-align: center; margin-top: 20%;">Bienvenido {{Rol}}: <br> {{Nombre}}</h1></b>
 
-  <ion-button expand="block" routerLink="/session" style="margin-top: 47%;" >
-    Siguiente
-  </ion-button>
+    <ion-button expand="block" routerLink="/session" style="margin-top: 47%;">
+        Siguiente
+    </ion-button>
 </ion-content>
 <app-pie-pag></app-pie-pag>
