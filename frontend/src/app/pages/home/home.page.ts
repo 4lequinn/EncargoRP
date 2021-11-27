@@ -18,9 +18,10 @@ export class HomePage {
 
   //Definimos el modelo
   usuario:UsuarioI = {
-    nombre: "",
+    nombre_usuario: "",
     contrasenia: "",
-    tipo : 0
+    tipo_usuario : 0,
+    activo : false
   };
 
 
@@ -48,9 +49,10 @@ export class HomePage {
         for (let i = 0; i < data.length; i++) {
           // Rellenamos la lista de usuarios
           this.usuario = {
-            nombre : data[i].nombre_usuario,
+            nombre_usuario : data[i].nombre_usuario,
             contrasenia : data[i].contrasenia,
-            tipo : data[i].tipo_usuario.id
+            tipo_usuario : data[i].tipo_usuario.id,
+            activo : data[i].activo
           }
 
           this.usuarios.push(this.usuario);
@@ -58,14 +60,14 @@ export class HomePage {
         var valida = 0; 
         // Recorremos la lista de usuarios para validar el acceso
         this.usuarios.forEach(item =>{
-          if(item.nombre == this.nombreUsuario && item.contrasenia == this.contrasenia){
+          if(item.nombre_usuario == this.nombreUsuario && item.contrasenia == this.contrasenia){
             valida = 1;
-            if(item.tipo == 1){
+            if(item.tipo_usuario == 1){
               //Portal Docentes
-              this.router.navigate(['/docente']);
+              this.router.navigate(['/docente',item.nombre_usuario]);
             }else{
               //Portal Alumnos
-              this.router.navigate(['/bienvenida',item.nombre]);
+              this.router.navigate(['/bienvenida',item.nombre_usuario]);
             }
           }
         });
@@ -80,7 +82,7 @@ export class HomePage {
         console.log("Error");
       }
     );
-    this.usuario.nombre || this.usuario.contrasenia
+    this.usuario.nombre_usuario || this.usuario.contrasenia
   }
   
 

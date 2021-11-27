@@ -49,6 +49,10 @@ export class ApiServiceService {
     return this.http.put(this.direccionAlumnos + id, alumno, this.httpOptions).pipe(retry(2));
   }
 
+  // Método que agrega alumnos
+  agregarAlumno(alumno) : Observable<any>{
+    return this.http.post(this.direccionAlumnos, alumno, this.httpOptions).pipe(retry(3));
+  }
   //////////////////////////////////////////////////////////
   // DOCENTES
   /////////////////////////////////////////////////////////
@@ -71,6 +75,11 @@ export class ApiServiceService {
   // Listar usuarios
   listarUsuarios(): Observable<any> {
     return this.http.get(this.direccionUsuarios).pipe(retry(3));
+  }
+
+  // Método que agrega usuarios
+  agregarUsuario(usuario) : Observable<any>{
+    return this.http.post(this.direccionUsuarios, usuario, this.httpOptions).pipe(retry(3));
   }
 
 }

@@ -1,5 +1,6 @@
 export interface UsuarioI{
-    nombre:string;
-    contrasenia:string;
-    tipo:number;
+    nombre_usuario :string;
+    contrasenia : string;
+    tipo_usuario : number;
+    activo : boolean;
 }

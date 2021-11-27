@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { AlumnoI } from 'src/app/components/model/Alumno';
+import { UsuarioI } from 'src/app/components/model/Usuario';
 import { AlumnosService } from 'src/app/services/alumnos.service';
+import { ApiServiceService } from 'src/app/services/api-service.service';
 
 
 @Component({
@@ -9,20 +12,90 @@ import { AlumnosService } from 'src/app/services/alumnos.service';
 })
 export class AgregarAlumnosPage implements OnInit {
 
+  // Variables
+  nombreAlumno: string;
+  apellidoAlumno: string;
+  usuarioAlumno: string;
 
-  constructor(private alumnosService: AlumnosService) { }
+  // Modelo Usuario
+  usuario: UsuarioI;
+
+  // Modelo Alumno
+  alumno: AlumnoI;
+
+  constructor
+    (
+      private alumnosService: AlumnosService,
+      private apiService: ApiServiceService,
+  ) { }
 
   ngOnInit() {
   }
 
-  guardarAlumnos(nombre, numero_lista, carrera,foto_alumno, presente) {
-    //console.log(nombre.value, numero_lista.value, carrera.value,foto_alumno.value, presente.value)
-    this.alumnosService.createAlumnos(nombre.value, numero_lista.value, carrera.value,foto_alumno.value, presente.value).subscribe(
-      (res) => console.log(res),
-      (err) => console.log(err)
-    );
+  agregarAlumno() {
+    // AGREGAR USUARIO Y AGREGAR ALUMNO
 
+    // Creamos un usuario de tipo Alumno con la contraseña 12345 por defecto
+    // y con el nombre asignado desde la interfaz
+    this.usuario = {
+      nombre_usuario: this.usuarioAlumno,
+      contrasenia: "12345",
+      tipo_usuario: 2,
+      activo: true
+    }
+
+
+    this.apiService.agregarUsuario(this.usuario).subscribe(
+      (data) => {
+        console.log('Usuario agregado');
+        // Buscamos el usuario agregado
+        this.apiService.listarUsuarios().subscribe(
+          (data) => {
+            console.log(data);
+            // Recorremos los usuarios
+            for(let i = 0 ; i < data.length ; i++){
+              if(this.usuarioAlumno == data[i].nombre_usuario){
+
+                // Al encontrar el usuario agregamos el alumno
+                // Creamos el modelo del alumno
+                this.alumno = {
+                  nombre : this.nombreAlumno,
+                  apellido :this.apellidoAlumno,
+                  carrera : 2,
+                  presente : false,
+                  ramos : [2],
+                  usuario : data[i].id
+                }
+                // Agregamos el alumno con la API
+                this.apiService.agregarAlumno(this.alumno).subscribe(
+                  (data) => {
+                    console.log('Alumno agregado con éxito!');
+                    this.limpiarCampos();
+                  },
+                  (e) => {
+                    console.log('No se pudo agregar el alumno!');
+                  }
+                )
+
+              }
+            } 
+          },
+          (e) => {
+
+          }
+        )
+      },
+      (e) => {
+        console.log('No se pudo agregar el usuario.');
+      }
+    )
   }
 
+
+  limpiarCampos() {
+    this.usuarioAlumno = "";
+    this.nombreAlumno = "";
+    this.apellidoAlumno = "";
+  }
 
 }

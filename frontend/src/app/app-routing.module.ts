@@ -32,7 +32,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/pag-qr/pag-qr.module').then( m => m.PagQRPageModule)
   },
   {
-    path: 'docente',
+    path: 'docente/:username',
     loadChildren: () => import('./pages/docente/docente.module').then( m => m.DocentePageModule)
   },
   {
