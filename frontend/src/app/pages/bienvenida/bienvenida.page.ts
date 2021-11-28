@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiServiceService } from 'src/app/services/api-service.service';
 
 @Component({
@@ -18,7 +18,8 @@ export class BienvenidaPage implements OnInit {
   constructor
   (
     private apiService :  ApiServiceService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router : Router
   )
   { }
 
@@ -47,6 +48,10 @@ export class BienvenidaPage implements OnInit {
         console.log(e);
       }
     )
+  }
+
+  sesionAlumno(){
+    this.router.navigate(['/session',this.username]);
   }
 
 }

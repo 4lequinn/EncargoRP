@@ -20,7 +20,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/recuperar-contrasena/recuperar-contrasena.module').then( m => m.RecuperarContrasenaPageModule)
   },
   {
-    path: 'session',
+    path: 'session/:username',
     loadChildren: () => import('./pages/session/session.module').then( m => m.SessionPageModule)
   },
   {

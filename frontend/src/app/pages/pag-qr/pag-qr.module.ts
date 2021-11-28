@@ -9,11 +9,15 @@ import { PagQRPageRoutingModule } from './pag-qr-routing.module';
 import { PagQRPage } from './pag-qr.page';
 import { ComponentsModule } from 'src/app/components/components.module';
 
+// Importamos el generador de códigos QR
+import { NgxQRCodeModule } from 'ngx-qrcode2'; 
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    NgxQRCodeModule,
     PagQRPageRoutingModule,
     ComponentsModule
   ],

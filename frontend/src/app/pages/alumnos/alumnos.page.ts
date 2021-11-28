@@ -13,7 +13,7 @@ export class AlumnosPage implements OnInit {
 
   alumnos: any = [];
 
-  constructor(private alumnosService: AlumnosService) { }
+  constructor(private alumnosService: AlumnosService, private router : Router) { }
 
   cargar(){
     this.alumnosService.getAll().subscribe( 
@@ -43,6 +43,5 @@ export class AlumnosPage implements OnInit {
       }
     );
   }
-
 
 }
