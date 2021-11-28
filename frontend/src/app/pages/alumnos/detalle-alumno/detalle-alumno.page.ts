@@ -6,6 +6,7 @@ import { AlumnosService } from 'src/app/services/alumnos.service';
 import { ApiServiceService } from 'src/app/services/api-service.service';
 import { DetalleI } from 'src/app/components/model/DetalleAlumno';
 import { AsistenciaI } from 'src/app/components/model/Asistencia';
+import { AlumnoI } from 'src/app/components/model/Alumno';
 
 @Component({
   selector: 'app-detalle-alumno',
@@ -17,8 +18,14 @@ export class DetalleAlumnoPage implements OnInit {
   // Modelo de alumno
   alumno: DetalleI;
 
+  // alumno2
+  alumno2 : AlumnoI;
+
   // ID 
   id : any;
+
+  // USUARIO ID
+  usuarioID : number;
 
   //Estados de asistencia PRESENTE - AUSENTE
   estados : boolean[] = [true , false];
@@ -51,7 +58,6 @@ export class DetalleAlumnoPage implements OnInit {
     console.log(this.valorSeleccionado);
   }
 
-
   detalleAlumno(id) {
     this.apiService.buscarAlumno(id).subscribe(
       (data) => {
@@ -77,9 +83,7 @@ export class DetalleAlumnoPage implements OnInit {
         console.log('Error al cargar');
       }
     )
-
   }
-
 
   actualizar(id){
     var estado = false;
@@ -116,10 +120,12 @@ export class DetalleAlumnoPage implements OnInit {
         {
           text: 'Eliminar',
           handler: () => {
+            this.buscarAlumno(id);
             this.alumnosService.deleteAlumnos(id).subscribe(
               (res) => {
                 //console.log(res);
-                this.router.navigate(["/alumnos"])
+                this.router.navigate(["/alumnos"]);
+
               },
               (err) => {
                 console.log(err);
@@ -134,6 +140,47 @@ export class DetalleAlumnoPage implements OnInit {
   }
 
 
+  buscarAlumno(id){
+    this.apiService.buscarAlumno(id).subscribe(
+      (data) => {
+        // Plantilla
+        this.alumno2 = {
+          nombre : data.nombre,
+          apellido : data.apellido,
+          carrera : data.carrera.id ,
+          presente : data.presente,
+          ramos : data.ramos[0].id,
+          usuario : data.usuario.id
+        }
+
+        // Eliminar usuario
+        this.eliminarUsuario(this.alumno2.usuario);
+
+      },
+      (e) => {
+        console.log('No se encontró');
+      }
+    )
+  }
+
+  eliminarUsuario(id){
+    this.apiService.buscarUsuario(id).subscribe(
+      (data) => {
+        this.usuarioID = data.id;
+        this.apiService.eliminarUsuario(this.usuarioID).subscribe(
+          (data) => {
+            console.log('Se eliminó con éxito!');
+          },
+          (e) => {
+            console.log('No se pudo eliminar');
+          }
+        )
+      },
+      (e) => {
+        console.log('No se pudo encontrar');
+      }
+    )
+  }
 
 
 

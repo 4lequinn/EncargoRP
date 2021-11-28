@@ -50,7 +50,7 @@ export class ApiServiceService {
   }
 
   // Método que agrega alumnos
-  agregarAlumno(alumno) : Observable<any>{
+  agregarAlumno(alumno): Observable<any> {
     return this.http.post(this.direccionAlumnos, alumno, this.httpOptions).pipe(retry(3));
   }
   //////////////////////////////////////////////////////////
@@ -78,8 +78,18 @@ export class ApiServiceService {
   }
 
   // Método que agrega usuarios
-  agregarUsuario(usuario) : Observable<any>{
+  agregarUsuario(usuario): Observable<any> {
     return this.http.post(this.direccionUsuarios, usuario, this.httpOptions).pipe(retry(3));
+  }
+
+  // Buscar usuario
+  buscarUsuario(id): Observable<any> {
+    return this.http.get(this.direccionUsuarios + id).pipe(retry(3));
+  }
+
+  // Eliminar usuarios
+  eliminarUsuario(id) {
+    return this.http.delete(this.direccionUsuarios + id, this.httpOptions).pipe(retry(2));
   }
 
 }
