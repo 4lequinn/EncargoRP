@@ -1,38 +1,60 @@
 <ion-content [fullscreen]="true" class="bg">
-<ion-header>
-  <ion-toolbar color="tertiary">
-    <ion-buttons slot="start" [routerLink]="['/alumnos']">
-      <ion-button>
-        <ion-icon name="arrow-back" style="color: black;"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-    <ion-title style="color: #e7c502;;" text-center>Detalle Alumnos</ion-title>
-  </ion-toolbar>
-</ion-header>
+    <ion-header>
+        <ion-toolbar color="tertiary">
+            <ion-buttons slot="start" [routerLink]="['/alumnos']">
+                <ion-button>
+                    <ion-icon name="arrow-back" style="color: black;"></ion-icon>
+                </ion-button>
+            </ion-buttons>
+            <ion-title style="color: #e7c502;;" text-center>Detalle Alumnos</ion-title>
+        </ion-toolbar>
+    </ion-header>
 
-<ion-card *ngFor=" let aux of alumnos" style="margin-top: 10%;">
-    <ion-card-header>
-      <ion-card-img>
-        <img [src]="aux.Foto_Alumno ? 'http://localhost:1337' + aux.Foto_Alumno.formats.thumbnail.url : 'https://world-schools.com/wp-content/uploads/2020/12/477_Feat-img_The-top-5-advantages-of-small-class-sizes.jpg' ">
-      </ion-card-img>
-      <ion-card-subtitle style="text-align: center;">{{aux.Presente}}</ion-card-subtitle>
-      <ion-card-title style="text-align: center;">{{aux.Nombre}}</ion-card-title>
-    </ion-card-header>
-  
-    <ion-card-content>
-      <b>Carrera:</b> {{aux.Carrera}}
-    </ion-card-content>
-    <ion-buttons>
-      <ion-button (click)="deleteAlumno(aux.id)">
-        <ion-icon name="trash" style="color: black;"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-    <ion-buttons>
-      <ion-button (click)="deleteAlumno(aux.id)">
-        <ion-icon name="create" style="color: black;"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </ion-card>
+    <ion-card *ngIf="alumno" style="margin-top: 10%;">
+        <ion-card-header>
+            <!-- ASISTENCIA -->
+            <ion-card-subtitle *ngIf="alumno.presente == true" style="text-align: center;">
+                PRESENTE
+                <ion-icon name="checkmark-done-circle-outline" color="success"></ion-icon>
+            </ion-card-subtitle>
+
+            <ion-card-subtitle *ngIf="alumno.presente == false" style="text-align: center;">
+                AUSENTE
+                <ion-icon name="close-circle-outline" color="danger"></ion-icon>
+            </ion-card-subtitle>
+
+            <ion-card-title style=" text-align: center; ">{{alumno.nombre}} {{alumno.apellido}} </ion-card-title>
+
+        </ion-card-header>
+
+        <ion-card-content>
+            <b>Carrera:</b> {{alumno.carrera}}
+            <br>
+            <b>Ramo:</b> {{alumno.ramo}}
+        </ion-card-content>
+
+        <ion-radio-group (ionChange)="valorCambiado()" [(ngModel)]="valorSeleccionado">
+
+            <ion-item>
+                <ion-label>Presente</ion-label>
+                <ion-radio value="presente"></ion-radio>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Ausente</ion-label>
+                <ion-radio value="ausente"></ion-radio>
+            </ion-item>
+        </ion-radio-group>
+
+        <ion-buttons>
+            <ion-button (click)="eliminarAlumno(alumno.alumnoID) ">
+                <ion-icon name="trash" color="danger"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+
+        <ion-button expand="full" (click)="actualizar(alumno.alumnoID)">Actualizar asistencia</ion-button>
+
+    </ion-card>
 
 
 </ion-content>
