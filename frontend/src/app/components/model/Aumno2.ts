@@ -1,8 +1,7 @@
-export interface DetalleI{
-    alumnoID:string;
+export interface AlumnoI2{
     nombre:string;
     apellido:string;
     presente:boolean;
-    ramo:string;
+    ramos:string[];
     usuario: string;
 }

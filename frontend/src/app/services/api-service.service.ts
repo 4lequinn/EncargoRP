@@ -23,7 +23,7 @@ export class ApiServiceService {
   constructor(private http: HttpClient) { }
 
   // Definimos las direcciones a utilizar de la API
-  direccionHost = "http://localhost:1337/";
+  direccionHost = "https://registroasist.herokuapp.com/";
   direccionAlumnos = this.direccionHost + "alumnos/";
   direccionUsuarios = this.direccionHost + "usuarios/";
   direccionDocentes = this.direccionHost + "docentes/"

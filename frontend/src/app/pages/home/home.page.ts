@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ApiServiceService } from 'src/app/services/api-service.service';
-import { UsuarioI } from 'src/app/components/model/Usuario';
 import { Router } from '@angular/router';
+import { Usuario2I } from 'src/app/components/model/Usuario2';
 
 @Component({
   selector: 'app-home',
@@ -11,22 +11,23 @@ import { Router } from '@angular/router';
 export class HomePage {
 
   paginatitulo = "Inicio de Sesion";
+  tipo: any = [];
 
   // Definimos los atributos del login
   nombreUsuario:string;
   contrasenia:string;
 
   //Definimos el modelo
-  usuario:UsuarioI = {
+  usuario:Usuario2I = {
     nombre_usuario: "",
     contrasenia: "",
-    tipo_usuario : 0,
+    tipo_usuario : "",
     activo : false
   };
 
 
   // Definimos un arreglo de usuarios
-  usuarios:UsuarioI[] = [];
+  usuarios:Usuario2I[] = [];
   
   constructor
   (
@@ -51,18 +52,20 @@ export class HomePage {
           this.usuario = {
             nombre_usuario : data[i].nombre_usuario,
             contrasenia : data[i].contrasenia,
-            tipo_usuario : data[i].tipo_usuario.id,
+            tipo_usuario : data[i].tipo_usuario.descripcion,
             activo : data[i].activo
           }
-
           this.usuarios.push(this.usuario);
         }
         var valida = 0; 
+        
         // Recorremos la lista de usuarios para validar el acceso
         this.usuarios.forEach(item =>{
+          console.log(this.usuario);
+          this.tipo = item.tipo_usuario;
           if(item.nombre_usuario == this.nombreUsuario && item.contrasenia == this.contrasenia){
             valida = 1;
-            if(item.tipo_usuario == 1){
+            if(this.tipo == 'DOCENTE'){
               //Portal Docentes
               this.router.navigate(['/docente',item.nombre_usuario]);
             }else{
@@ -86,46 +89,4 @@ export class HomePage {
   }
   
 
-/* 
-  async iniciarSesion(credenciales) {
-    // Enviamos un diccionario
-    this.usuario = {
-      usuario: credenciales.username,
-      contrasenia: credenciales.password,
-      tipo: 0 // Valor por defecto no se usa aquí
-    };
-
-    const carga = await this.loadingController.create({
-      message: "Cargando ..."
-    });
-
-    await carga.present();
-
-    this.apiService.iniciarSesionPOST(this.usuario).subscribe(
-      (data) => {
-        console.log(data);
-        console.log(data.mensaje)
-        if (data.mensaje == "Error") {
-          // CARGA DE INICIO DE SESIÓN
-          carga.dismiss();
-          // Mensaje de Usuario o Contraseña incorrectas
-          this.mensajeOk('¡Error!', '¡Usuario o contraseña incorrectos!');
-        } else {
-          this.authService.login(credenciales.username, credenciales.password, data.tipoUsuario, data.rut, data.bienvenida)
-          // CARGA DE INICIO DE SESIÓN
-          carga.dismiss();
-        }
-
-      },
-      (error) => {
-        // CARGA DE INICIO DE SESIÓN
-        carga.dismiss();
-        // Alerta de que los servidores están caídos, vuelva más tarde
-        console.log(error);
-        this.mensajeOk('¡Lo sentimos!', 'EL servicio no se encuentra disponible en este momento, vuelva más tarde.');
-      }
-    );
-  }
-
-*/
 }

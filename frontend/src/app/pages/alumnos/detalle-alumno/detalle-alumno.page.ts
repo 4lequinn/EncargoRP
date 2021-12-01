@@ -53,6 +53,8 @@ export class DetalleAlumnoPage implements OnInit {
     this.detalleAlumno(this.id);
   }
 
+
+
   valorCambiado(){
     // Método que captura el valor seleccionado actual del radio button
     console.log(this.valorSeleccionado);
@@ -66,7 +68,6 @@ export class DetalleAlumnoPage implements OnInit {
           alumnoID : data.id,
           nombre : data.nombre,
           apellido : data.apellido,
-          carrera : data.carrera.descripcion ,
           ramo : data.ramos[0].descripcion,
           usuario : data.usuario.nombre_usuario,
           presente : data.presente
@@ -147,7 +148,6 @@ export class DetalleAlumnoPage implements OnInit {
         this.alumno2 = {
           nombre : data.nombre,
           apellido : data.apellido,
-          carrera : data.carrera.id ,
           presente : data.presente,
           ramos : data.ramos[0].id,
           usuario : data.usuario.id

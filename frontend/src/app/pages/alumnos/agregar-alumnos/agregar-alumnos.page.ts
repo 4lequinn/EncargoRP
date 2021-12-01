@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlumnoI } from 'src/app/components/model/Alumno';
-import { UsuarioI } from 'src/app/components/model/Usuario';
+import { AlumnoI2 } from 'src/app/components/model/Aumno2';
+import { Usuario2I } from 'src/app/components/model/Usuario2';
 import { AlumnosService } from 'src/app/services/alumnos.service';
 import { ApiServiceService } from 'src/app/services/api-service.service';
 
@@ -18,10 +19,10 @@ export class AgregarAlumnosPage implements OnInit {
   usuarioAlumno: string;
 
   // Modelo Usuario
-  usuario: UsuarioI;
+  usuario: Usuario2I;
 
   // Modelo Alumno
-  alumno: AlumnoI;
+  alumno: AlumnoI2;
 
   constructor
     (
@@ -40,7 +41,7 @@ export class AgregarAlumnosPage implements OnInit {
     this.usuario = {
       nombre_usuario: this.usuarioAlumno,
       contrasenia: "12345",
-      tipo_usuario: 2,
+      tipo_usuario: "61a4307cc8105a1f281ece80",
       activo: true
     }
 
@@ -61,9 +62,8 @@ export class AgregarAlumnosPage implements OnInit {
                 this.alumno = {
                   nombre : this.nombreAlumno,
                   apellido :this.apellidoAlumno,
-                  carrera : 2,
                   presente : false,
-                  ramos : [2],
+                  ramos : ["61a42af8c8105a1f281ece7a"],
                   usuario : data[i].id
                 }
                 // Agregamos el alumno con la API

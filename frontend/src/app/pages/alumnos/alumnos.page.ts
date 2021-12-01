@@ -29,19 +29,11 @@ export class AlumnosPage implements OnInit {
 
 
   ngOnInit() {
-    this.cargar
+    this.cargar();
   }
 
   ionViewWillEnter(){
-    this.alumnosService.getAll().subscribe( 
-      (res) => {
-        console.log(res);
-        this.alumnos = res;
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
+    this.cargar();
   }
 
 }

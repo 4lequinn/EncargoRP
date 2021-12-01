@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 })
 export class AlumnosService {
 
-  API = "http://localhost:1337/alumnos"
+  API = "https://registroasist.herokuapp.com/alumnos"
 
   constructor(private cliente: HttpClient) { }
 

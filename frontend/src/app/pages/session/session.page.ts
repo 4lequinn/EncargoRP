@@ -54,7 +54,6 @@ export class SessionPage implements OnInit {
               alumnoID : data[i].id,
               nombre : data[i].nombre,
               apellido : data[i].apellido,
-              carrera : "",
               presente : data[i].presente,
               ramo : data[i].ramos[0].descripcion,
               usuario : this.username
@@ -81,7 +80,6 @@ export class SessionPage implements OnInit {
         this.asistencia = {
           presente : true
         }
-
         this.registrarAsistencia(this.asistencia);
       }
     }
